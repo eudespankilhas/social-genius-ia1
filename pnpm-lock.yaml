@@ -1,0 +1,20 @@
+lockfileVersion: 6.0
+dependencies:
+  "@supabase/auth-helpers-nextjs":
+    specifier: ^0.10.0
+    version: 0.10.0
+  lucide-react:
+    specifier: ^0.514.0
+    version: 0.514.0
+  next:
+    specifier: 14.1.4
+    version: 14.1.4
+  react:
+    specifier: 18.2.0
+    version: 18.2.0
+  react-dom:
+    specifier: 18.2.0
+    version: 18.2.0
+  react-router-dom:
+    specifier: ^7.6.2
+    version: 7.6.2
