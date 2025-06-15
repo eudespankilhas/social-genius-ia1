@@ -1,5 +1,85 @@
 {
-  "build": {
-    "installCommand": "pnpm install --no-frozen-lockfile"
-  }
+  "buildCommand": "npm run build",
+  "installCommand": "npm install --legacy-peer-deps",
+  "framework": "nextjs",
+  "outputDirectory": ".next",
+  "regions": ["gru1", "iad1"],
+  "functions": {
+    "app/api/**/*.ts": {
+      "maxDuration": 30
+    }
+  },
+  "env": {
+    "NPM_CONFIG_LEGACY_PEER_DEPS": "true"
+  },
+  "headers": [
+    {
+      "source": "/manifest.json",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/icons/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/github",
+      "destination": "https://github.com/seu-usuario/assistente-voz-ia",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/test",
+      "destination": "/test"
+    },
+    {
+      "source": "/pank",
+      "destination": "/pank"
+    },
+    {
+      "source": "/settings",
+      "destination": "/settings"
+    },
+    {
+      "source": "/history",
+      "destination": "/history"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    },
+    {
+      "source": "/",
+      "destination": "/"
+    }
+  ]
 }
